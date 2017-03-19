@@ -19,7 +19,7 @@
     "supertest": "^1.0.0"
   },
   "scripts": {
-    "start": "node app.js",
-    "test": "swagger project test"
+    "start": "babel-node api/app.js",
+    "test": "swagger project test app"
   }
 }

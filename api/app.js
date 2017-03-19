@@ -1,11 +1,13 @@
-'use strict';
+import SwaggerExpress from 'swagger-express-mw';
+import express from 'express';
 
-var SwaggerExpress = require('swagger-express-mw');
-var app = require('express')();
+let app = express();
+
 module.exports = app; // for testing
 
 var config = {
-  appRoot: __dirname // required config
+    appRoot: __dirname, // required config
+    swaggerFile: 'swagger/swagger.yaml'
 };
 
 SwaggerExpress.create(config, function(err, swaggerExpress) {
@@ -14,7 +16,7 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   // install middleware
   swaggerExpress.register(app);
 
-  var port = process.env.PORT || 10010;
+  let port = process.env.PORT || 10010;
   app.listen(port);
 
   if (swaggerExpress.runner.swagger.paths['/hello']) {
